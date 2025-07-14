@@ -59,7 +59,6 @@ body {
     margin-bottom: 100px;
 }
 
-/* span包裹 */
 .title span {
     margin: 0 3px;
     display: inline-block;
@@ -103,27 +102,27 @@ body {
 }
 
 .bar {
-  width: 12px;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1.5px;
+    width: 12px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5px;
 }
 
 .bar:hover .particle {
-  opacity: 1 !important;
-  transform: scale(1.1);
+    opacity: 1 !important;
+    transform: scale(1.1);
 }
 
 .particle {
-  width: 100%;
-  height: 8px;
-  border-radius: 3px;
-  opacity: 0.6;
-  background: linear-gradient(45deg, #a3d8f4, #b2f7ef);
-  box-shadow: 0 0 4px rgba(163, 216, 244, 0.5);
-  transition: background 0.2s, opacity 0.2s;
+    width: 100%;
+    height: 8px;
+    border-radius: 3px;
+    opacity: 0.6;
+    background: linear-gradient(45deg, #a3d8f4, #b2f7ef);
+    box-shadow: 0 0 4px rgba(163, 216, 244, 0.5);
+    transition: background 0.2s, opacity 0.2s;
 }
 
 audio {
