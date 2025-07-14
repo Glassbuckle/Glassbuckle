@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background: linear-gradient(135deg, #fdfbff, #ffe6f0);
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* 粒子背景容器 */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+/* 头像 */
+.avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffffcc;
+}
+
+.avatar:active {
+    filter: brightness(1.3);
+}
+
+/* 标题 */
+.title {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 100px;
+}
+
+/* span包裹 */
+.title span {
+    margin: 0 3px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.title span:hover {
+    transform: translateY(-6px) scale(1.1);
+    color: #bee2ff;
+}
+
+/* 播放按钮 */
+.controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(144, 238, 144, 0.7);
+    color: white;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 10px rgba(144, 238, 144, 0.4);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: rgba(144, 238, 144, 1);
+    transform: scale(1.05);
+}
+
+.visualizer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.bar {
+  width: 12px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5px;
+}
+
+.bar:hover .particle {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+.particle {
+  width: 100%;
+  height: 8px;
+  border-radius: 3px;
+  opacity: 0.6;
+  background: linear-gradient(45deg, #a3d8f4, #b2f7ef);
+  box-shadow: 0 0 4px rgba(163, 216, 244, 0.5);
+  transition: background 0.2s, opacity 0.2s;
+}
+
+audio {
+    display: none;
+}

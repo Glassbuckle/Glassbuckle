@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>见满</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="particles-js"></div>
+
+  <div class="wrapper">
+    <img src="ovo.jpg" alt="头像" class="avatar" />
+    <h1 class="title">
+      <span>你</span><span>好</span><span>，</span>
+      <span>我</span><span>是</span><span>小</span><span>满</span>
+      <span>~</span>
+    </h1>
+    <div class="controls">
+      <button onclick="toggleMusic()">🎵 播放 / 暂停</button>
+    </div>
+  </div>
+
+  <div class="visualizer" id="visualizer"></div>
+
+  <audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
