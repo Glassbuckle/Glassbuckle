@@ -25,7 +25,7 @@ const colors = [
 
 const bars = [];
 const particlesPerBar = 8;
-const barCount = 40;
+const barCount = 80;
 
 for (let i = 0; i < barCount; i++) {
     const bar = document.createElement("div");
@@ -44,7 +44,7 @@ for (let i = 0; i < barCount; i++) {
 }
 
 // 控制跳动频率
-const animationInterval = 80;
+const animationInterval = 60;
 
 function animateBars() {
     if (!audio.paused) {
