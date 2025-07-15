@@ -19,18 +19,11 @@ const audio = document.getElementById("bgm");
 const visualizer = document.getElementById("visualizer");
 
 const colors = [
-    "#b2eaff",
-    "#c9f0ff",
-    "#d5faff",
-    "#e8fcff",
-    "#c2f0e2",
-    "#b8f3f0",
-    "#daf5f2",
-    "#ffffff"
+    "#b2eaff", "#c9f0ff", "#d5faff", "#e8fcff",
+    "#c2f0e2", "#b8f3f0", "#daf5f2", "#ffffff"
 ];
 
-
-const bars = []; // 
+const bars = [];
 const particlesPerBar = 8;
 const barCount = 40;
 
@@ -49,6 +42,9 @@ for (let i = 0; i < barCount; i++) {
     visualizer.appendChild(bar);
     bars.push(particles);
 }
+
+// 控制跳动频率
+const animationInterval = 80;
 
 function animateBars() {
     if (!audio.paused) {
@@ -83,12 +79,10 @@ function animateBars() {
             });
         });
     }
-    requestAnimationFrame(animateBars);
 }
 
-
-
-animateBars();
+// 启动定时更新粒子
+setInterval(animateBars, animationInterval);
 
 function toggleMusic() {
     if (audio.paused) audio.play();
