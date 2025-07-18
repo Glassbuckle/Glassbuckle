@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>免费天气查询（wttr.in）</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; padding: 2em; }
+    input, button { font-size: 1rem; padding: 0.5em; margin: 0.5em; }
+    #result { margin-top: 1em; white-space: pre-wrap; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto;}
+  </style>
+</head>
+<body>
+  <h1>免费天气查询 🌤️</h1>
+  <input id="city" type="text" placeholder="请输入城市名，例如 北京" />
+  <button id="search-btn">查询天气</button>
+  <div id="result"></div>
+
+  <script>
+    const cityInput = document.getElementById('city');
+    const searchBtn = document.getElementById('search-btn');
+    const resultDiv = document.getElementById('result');
+
+    searchBtn.addEventListener('click', () => {
+      const city = cityInput.value.trim();
+      if (!city) {
+        alert('请输入城市名');
+        return;
+      }
+
+      // wttr.in支持CORS，可以直接调用
+      fetch(`https://wttr.in/${encodeURIComponent(city)}?format=j1`)
+        .then(res => {
+          if (!res.ok) throw new Error('查询失败');
+          return res.json();
+        })
+        .then(data => {
+          // 显示当前天气描述和温度
+          const current = data.current_condition[0];
+          resultDiv.textContent = `
+地点：${city}
+天气：${current.weatherDesc[0].value}
+温度：${current.temp_C} ℃
+风速：${current.windspeedKmph} 公里/小时
+湿度：${current.humidity} %
+          `;
+        })
+        .catch(err => {
+          alert(err.message);
+          resultDiv.textContent = '';
+        });
+    });
+  </script>
+</body>
+</html>
