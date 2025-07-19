@@ -1,0 +1,256 @@
+/* 重置与基础设置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.glow-text span,
+.welcome span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+/* 鼠标悬停时每个字浮动 + 放大 + 变色 + 发光 */
+.glow-text span:hover,
+.welcome span:hover {
+  transform: translateY(-5px) scale(1.2) rotate(-2deg);
+  color: #ffffffc5;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.532);
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('bj.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 小红书图标按钮 */
+.xiaohongshu-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.xiaohongshu-link img {
+  width: 38px;
+  height: 38px;
+  transition: transform 0.3s ease;
+}
+
+.xiaohongshu-link img:hover {
+  transform: scale(1.15) rotate(6deg);
+}
+
+/* 背景图与模糊层 */
+.background {
+  position: fixed;
+  inset: 0;
+  background: url('bj.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: -2;
+}
+
+.blur-layer {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
+/* 容器整体居中 */
+.container {
+  max-width: 1500px;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+  position: relative;
+}
+
+/* Header 区域浮动进入 */
+.floating-header {
+  margin-bottom: 30px;
+  animation: floatIn 1.2s ease-out;
+}
+
+/* 信息区域对齐设置 */
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 头像容器：整体浮动 */
+.avatar-glow {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  animation: avatarFloat 3s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* 背景模糊+发光光环，跟随 avatar-glow 浮动 */
+.avatar-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.3);
+  z-index: -1;
+}
+
+/* 头像图片本身不再浮动 */
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 标题 */
+.floating-header h1 {
+  font-size: 2rem;
+  color: #3491fad3;
+  letter-spacing: 8px;
+  margin: 5px 0;
+  text-shadow: 1px 1px 2px rgb(166, 194, 255);
+}
+
+.floating-header .welcome {
+  font-size: 20px;
+  color: #fec5c5b5;
+  margin-top: 4px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgb(166, 194, 255);
+}
+
+/* 歌单盒子 */
+.songlist-box {
+  width: 80%;
+  max-width: 1200px;
+  height: 420px;
+  margin: 0 auto;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(114, 163, 255, 0.429);
+  padding: 20px;
+  text-align: left;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 3px solid rgba(255, 255, 255, 0.002);
+}
+
+/* 歌单为多列自适应排列 */
+.songlist-box ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px 20px;
+  padding: 10px;
+}
+
+/* 歌曲单项样式 */
+.songlist-box li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.1rem;
+  color: #555;
+  transition: transform 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.songlist-box li:hover {
+  transform: translateX(6px) scale(1.02);
+  color: #ff4c77;
+}
+
+.songlist-box li:last-child {
+  border-bottom: none;
+}
+
+/* 复制提示 */
+.copy-tip {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -30px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 230, 255, 0.85));
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* 动画区 */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes avatarFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* 响应式支持 */
+@media screen and (max-width: 500px) {
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .songlist-box {
+    padding: 15px;
+  }
+
+  .songlist-box li {
+    font-size: 1rem;
+  }
+}

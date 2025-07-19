@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>满满的歌势歌单</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- 小红书跳转按钮 -->
+  <a href="https://www.xiaohongshu.com" class="xiaohongshu-link" target="_blank" rel="noopener noreferrer">
+    <img src="xiaohongshu.png" alt="" />
+  </a>
+
+  <!-- 背景模糊层 -->
+  <div class="background"></div>
+  <div class="blur-layer"></div>
+
+  <!-- 页面主内容 -->
+  <div class="container">
+    <header class="floating-header">
+      <div class="info-box glow-bg">
+        <div class="avatar-glow">
+          <img src="tx.jpg" class="avatar" />
+        </div>
+        <h1 class="glow-text">
+          <span>满</span><span>满</span><span>的</span><span>歌</span><span>势</span><span>歌</span><span>单</span>
+        </h1>
+        <p class="welcome">
+          <span>欢</span><span>迎</span><span>点</span><span>歌</span><span>~</span><span>点</span><span>击</span><span>复</span><span>制</span>
+        </p>
+      </div>
+    </header>
+
+    <!-- 歌单列表 -->
+    <section class="songlist-box">
+      <ul>
+        <!-- 示例歌曲 -->
+        <li>🎵 1</li>
+        <li>🎵 2</li>
+        <li>🎵 3</li>
+        <li>🎵 4</li>
+        <li>🎵 5</li>
+        <li>🎵 6</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- JS 脚本：点击复制提示 -->
+  <script>
+    const songItems = document.querySelectorAll('.songlist-box li');
+
+    songItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const text = item.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          showCopyTip('✅ 已复制歌曲！');
+        }).catch(err => {
+          alert('复制失败：' + err);
+        });
+      });
+    });
+
+    function showCopyTip(message) {
+      const tip = document.createElement('div');
+      tip.className = 'copy-tip';
+      tip.textContent = message;
+      document.body.appendChild(tip);
+
+      requestAnimationFrame(() => {
+        tip.style.opacity = '1';
+        tip.style.transform = 'translate(-50%, 0)';
+      });
+
+      setTimeout(() => {
+        tip.style.opacity = '0';
+        tip.style.transform = 'translate(-50%, -30px)';
+        setTimeout(() => tip.remove(), 400);
+      }, 1500);
+    }
+  </script>
+</body>
+
+</html>
